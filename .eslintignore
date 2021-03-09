@@ -1,0 +1,6 @@
+/dist
+coverage/
+build/
+lib/
+extends/
+tsconfig.json
