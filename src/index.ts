@@ -2,9 +2,11 @@ import 'reflect-metadata';
 import { ApolloServer } from 'apollo-server-express';
 import { buildSchema } from 'type-graphql';
 import { Container } from 'typedi';
-import app from './app';
+import express from 'express';
 import { MovieResolver } from './resolvers/movie';
 import initializeDB from './database/index';
+
+const app = express();
 
 async function main() {
   const schema = await buildSchema({

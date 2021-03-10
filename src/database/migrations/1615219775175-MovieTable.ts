@@ -13,6 +13,6 @@ export class MovieTable1615219775175 implements MigrationInterface {
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.dropTable('movies');
+    await queryRunner.dropTable('movie');
   }
 }

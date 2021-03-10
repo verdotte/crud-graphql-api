@@ -4,6 +4,5 @@ build/
 .env
 coverage/
 .vscode/
-schema.gql
 
 yarn.lock
