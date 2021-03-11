@@ -86,3 +86,31 @@ input CreateMovieInput {
   title: String!
 }
 ```
+
+```
+graph-ts-api
+├─ src
+│  ├─ database
+│  │  ├─ entity
+│  │  │  └─ Movie.ts
+│  │  ├─ index.ts
+│  │  ├─ migrations
+│  │  │  └─ 1615219775175-MovieTable.ts
+│  │  └─ services
+│  │     └─ movieService.ts
+│  ├─ index.ts
+│  ├─ resolvers
+│  │  └─ movie.ts
+│  └─ schema
+│     └─ movie.ts
+└─ tsconfig.json
+├─ .eslintignore
+├─ .eslintrc.json
+├─ .gitignore
+├─ .prettierignore
+├─ .prettierrc
+├─ ormconfig.ts
+├─ package.json
+├─ README.md
+├─ schema.gql
+```
