@@ -3,7 +3,17 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
-const { DB_USER, DB_HOST, DB_PASSWORD, DB_PORT, DEV_DB } = process.env;
+const {
+  DB_USER,
+  DB_HOST,
+  DB_PASSWORD,
+  DB_PORT,
+  DEV_DB,
+  PROD_DB,
+  NODE_ENV,
+} = process.env;
+
+const dir = NODE_ENV === 'production' ? 'build' : 'src';
 
 const config: ConnectionOptions = {
   type: 'postgres',
@@ -11,16 +21,16 @@ const config: ConnectionOptions = {
   port: Number(DB_PORT),
   username: DB_USER,
   password: DB_PASSWORD,
-  database: DEV_DB,
+  database: NODE_ENV === 'production' ? PROD_DB : DEV_DB,
   synchronize: true,
   logging: false,
-  entities: ['src/database/entity/**/*.ts'],
-  migrations: ['src/database/migrations/**/*.ts'],
-  subscribers: ['src/database/subscriber/**/*.ts'],
+  entities: [`${dir}/database/entity/**/*.{ts,js}`],
+  migrations: [`${dir}/database/migrations/**/*.{ts,js}`],
+  subscribers: [`${dir}/database/subscriber/**/*.{ts,js}`],
   cli: {
-    migrationsDir: 'src/database/migrations',
-    entitiesDir: 'src/database/entity',
-    subscribersDir: 'src/database/subscriber',
+    migrationsDir: `${dir}/database/migrations`,
+    entitiesDir: `${dir}/database/entity`,
+    subscribersDir: `${dir}/database/subscriber`,
   },
 };
 

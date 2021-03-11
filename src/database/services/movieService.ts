@@ -5,11 +5,11 @@ import { CreateMovieInput, UpdateMovieInput } from '../../schema/movie';
 @Service()
 export class MovieService {
   getAll = async (): Promise<Movie[]> => {
-    return Movie.find();
+    return await Movie.find();
   };
 
   getOne = async (id: number): Promise<Movie | undefined> => {
-    const movie = Movie.findOne({ where: { id } });
+    const movie = await Movie.findOne({ where: { id } });
 
     if (!movie) {
       throw new Error(`The movie with id: ${id} does not exist!`);
@@ -18,7 +18,7 @@ export class MovieService {
   };
 
   create = async (createMovieInput: CreateMovieInput): Promise<Movie> => {
-    return Movie.create(createMovieInput).save();
+    return await Movie.create(createMovieInput).save();
   };
 
   update = async (
