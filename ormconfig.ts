@@ -22,7 +22,7 @@ const config: ConnectionOptions = {
   username: DB_USER,
   password: DB_PASSWORD,
   database: NODE_ENV === 'production' ? PROD_DB : DEV_DB,
-  synchronize: true,
+  synchronize: NODE_ENV === 'production' ? false : true,
   logging: false,
   entities: [`${dir}/database/entity/**/*.{ts,js}`],
   migrations: [`${dir}/database/migrations/**/*.{ts,js}`],
