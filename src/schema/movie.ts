@@ -1,5 +1,5 @@
 import { Field, ObjectType, InputType } from 'type-graphql';
-import { Min, Max } from 'class-validator';
+import { Length } from 'class-validator';
 
 @ObjectType()
 export class Movie {
@@ -7,13 +7,9 @@ export class Movie {
   id: number;
 
   @Field()
-  @Min(3)
-  @Max(50)
   title: string;
 
   @Field()
-  @Min(10)
-  @Max(250)
   description: string;
 
   @Field((type) => [String])
@@ -32,13 +28,11 @@ export class Movie {
 @InputType()
 export class CreateMovieInput implements Partial<Movie> {
   @Field()
-  @Min(3)
-  @Max(50)
+  @Length(2, 50)
   title: string;
 
   @Field()
-  @Min(10)
-  @Max(250)
+  @Length(10, 250)
   description: string;
 
   @Field((type) => [String])
@@ -51,13 +45,11 @@ export class CreateMovieInput implements Partial<Movie> {
 @InputType()
 export class UpdateMovieInput implements Partial<Movie> {
   @Field({ nullable: true })
-  @Min(3)
-  @Max(50)
+  @Length(2, 50)
   title?: string;
 
   @Field({ nullable: true })
-  @Min(10)
-  @Max(250)
+  @Length(10, 250)
   description?: string;
 
   @Field((type) => [String], { nullable: true })

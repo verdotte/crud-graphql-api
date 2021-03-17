@@ -21,7 +21,7 @@ export class Movie extends BaseEntity {
   @Column({ type: 'text', array: true })
   actors: string[];
 
-  @Column({ nullable: true, name: 'released_at' })
+  @Column({ nullable: true, name: 'released_year' })
   releaseYear: string;
 
   @CreateDateColumn({ name: 'updated_at' })

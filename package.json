@@ -8,6 +8,7 @@
     "start": "cross-env NODE_ENV=production ts-node build/index.js",
     "dev": "nodemon src/index.ts",
     "test": "",
+    "lint": "eslint . --ext .ts",
     "typeorm:cli": "ts-node ./node_modules/typeorm/cli -f ./ormconfig.ts",
     "create-table": "npm run typeorm:cli -- migration:run",
     "drop-table": "npm run typeorm:cli -- migration:revert"
